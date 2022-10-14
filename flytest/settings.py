@@ -25,15 +25,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = SECRET_KEY.startswith('django-insecure-')
 
-ALLOWED_HOSTS = [
-    'divine-mountain-3508.fly.dev',
-]
+if not DEBUG:
+    ALLOWED_HOSTS = [
+        'divine-mountain-3508.fly.dev',
+    ]
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://divine-mountain-3508.fly.dev',
-]
+    CSRF_TRUSTED_ORIGINS = [
+        'https://divine-mountain-3508.fly.dev',
+    ]
 
 
 # Application definition
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'simple.apps.SimpleConfig',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +131,5 @@ STATIC_ROOT = 'static'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'simple.User'

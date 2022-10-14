@@ -19,4 +19,5 @@ def main():
 
 
 if __name__ == '__main__':
+    os.environ.setdefault('DJANGO_SECRET_KEY', 'django-insecure-bloopity-blorp-00000000')
     main()
