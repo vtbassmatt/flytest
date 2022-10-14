@@ -30,10 +30,12 @@ DEBUG = SECRET_KEY.startswith('django-insecure-')
 if not DEBUG:
     ALLOWED_HOSTS = [
         'divine-mountain-3508.fly.dev',
+        'flytest.vtbassmatt.com',
     ]
 
     CSRF_TRUSTED_ORIGINS = [
         'https://divine-mountain-3508.fly.dev',
+        'https://flytest.vtbassmatt.com',
     ]
 
 
